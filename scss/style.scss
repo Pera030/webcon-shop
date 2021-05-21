@@ -1,0 +1,537 @@
+/*************************
+varaibles
+*************************/
+$blue: #4831d4;
+$green: #ccf381;
+$lightgray: #f7f7f7;
+$gray: #333;
+$white: #fff;
+$transition: .3s ease;
+$font: 16px;
+$fontFamily: 'Roboto', sans-serif;
+$padding: 100px 0;
+$boxShadow: 0 0 10px #b7b6b6;
+$textShadow: 0 0 2px #333;
+
+/*************************
+Basic styles
+*************************/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    color: $gray;
+    font-size: $font;
+    font-family: $fontFamily;
+    line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 900;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    color: $gray;
+    text-decoration: none;
+    &:hover {
+        transition: $transition;
+    }
+}
+
+.headings {
+    background-color: $lightgray;
+    padding: 50px 0;
+    text-align: center;
+    h3 {
+        font-size: 2.5rem;
+    }
+    p {
+        font-weight: 300;
+    }
+}
+
+/*************************
+Mixins
+*************************/
+@mixin btn {
+    background-color: $green;
+    border: none;
+    text-transform: uppercase;
+    padding: 20px 75px;
+    color: $gray;
+    font-size: 1.1rem;
+}
+
+@mixin btn-hover {
+    background-color: $blue;
+    cursor: pointer;
+    transition: $transition;
+    color: $white;
+}
+
+/*************************
+Top bar
+*************************/
+.topbar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: $lightgray;
+    padding: 5px 50px;
+    @media(max-width:768px) {
+        justify-content: center;
+        text-align: center;
+    }
+    a {
+        &:hover {
+            color: $blue;
+            transition: $transition;
+        }
+    }
+}
+
+/*************************
+Navigation
+*************************/
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    @media(max-width:768px) {
+        justify-content: center;
+        text-align: center;
+        flex-direction: column;
+    }
+    padding: 15px 50px;
+    border-bottom: 4px solid $green;
+    .logo {
+        font-size: 2rem;
+        text-decoration: none;
+        letter-spacing: 2px;
+        padding-right: 135px;
+        @media(max-width:768px) {
+            padding-right: 0;
+            margin-bottom: 20px;
+        }
+        span {
+            color: $green;
+            font-style: italic;
+            font-weight: 700;
+            text-shadow: $textShadow;
+        }
+    }
+    ul {
+        display: flex;
+        flex-wrap: wrap;
+        @media(max-width:768px) {
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+        li {
+            margin-right: 190px;
+            @media(max-width:768px) {
+                margin-right: 0;
+            }
+            a {
+                &:hover {
+                    color: $green;
+                }
+            }
+        }
+    }
+    .icons {
+        a {
+            margin-left: 16px;
+            &:hover {
+                color: $green;
+            }
+        }
+    }
+}
+
+/*************************
+Header
+*************************/
+header {
+    background-image: url(../img/header.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+    @media(max-width:768px) {
+        height: 80vh;
+    }
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding-left: 50px;
+    h4 {
+        font-size: 1.4rem;
+    }
+    h1 {
+        font-size: 4rem;
+        line-height: 1.1;
+        color: $white;
+        letter-spacing: 2px;
+        span {
+            color: $green;
+        }
+    }
+    p {
+        margin-bottom: 15px;
+    }
+    button {
+        @include btn;
+        &:hover {
+            @include btn-hover;
+        }
+    }
+    
+}
+
+/*************************
+Feature products
+*************************/
+.featureProducts {
+    padding: $padding;
+    h2 {
+        font-size: 3rem;
+        text-align: center;
+        &::after {
+            display: block;
+            content: "";
+            border: none;
+            height: 2px;
+            width: 200px;
+            margin: 20px auto 40px auto;
+            background-color: $green;
+        }
+    }
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        .col {
+            flex: 0 0 31%;
+            @media(max-width:768px) {
+                flex: 0 0 100%;
+            }
+            box-shadow: $boxShadow;
+            img {
+                width: 100%;
+                height: auto;
+            }
+            .text {
+                padding-left: 20px;
+                padding-bottom: 20px;
+                h3 {
+                    font-size: 1.8rem;
+                }
+                p {
+                    display: inline-block;
+                    margin-right: 25px;
+                    margin-top: 20px;
+                }
+                p:nth-of-type(1) {
+                    text-decoration: line-through;
+                    color: $blue;
+                }
+            }
+        }
+    }
+}
+
+/*************************
+Footer
+*************************/
+footer {
+    background-color: $blue;
+    padding: $padding;
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        @media(max-width:768px) {
+            flex-direction: column;
+        }
+        article {
+            color: $white;
+            flex: 0 0 33%;
+            @media(max-width:768px) {
+                flex: 0 0 100%;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+            h3 {
+                font-size: 1.7rem;
+                padding-bottom: 30px;
+            }
+            ul {
+                line-height: 2;
+                a {
+                    color: $green;
+                    &:hover {
+                        color: $white;
+                    }
+                }
+            }
+            form {
+                margin-top: 10px;
+                input[type="text"] {
+                    padding: 12px;
+                }
+                input[type="submit"] {
+                    background-color: $green;
+                    padding: 5px 10px;
+                    margin-left: -25px;
+                }
+            }
+        }
+    }
+}
+
+/*************************
+Bottom bar
+*************************/
+.bottomBar {
+    background-color: $green;
+    padding: 5px 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    .icon {
+        a {
+            margin-left: 20px;
+            &:hover {
+                color: $blue;
+            }
+        }
+    }
+}
+
+/*************************
+Security
+*************************/
+.security {
+    padding: $padding;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    article {
+        flex: 0 0 23%;
+        @media(max-width:768px) {
+            flex: 0 0 100%;
+            margin-bottom: 30px;
+        }
+        border: 1px solid $gray;
+        box-shadow: $boxShadow;
+        text-align: center;
+        padding: 30px 0;
+        i {
+            color: $green;
+            font-size: 2rem;
+            text-shadow: $textShadow;
+        }
+        h4 {
+            font-size: 1.5rem;
+            padding: 10px 0;
+        }
+    }
+}
+
+/*************************
+Offer
+*************************/
+.offer {
+    background-image: url(../img/shop.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-top: 3px solid $green;
+    @media(max-width:768px) {
+        background-position: -200px center;
+    }
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-end;
+        height: 80vh;
+        padding-right: 100px;
+        @media(max-width:768px) {
+            padding-right: 0px;
+        }
+        h3 {
+            font-weight: 300;
+            font-size: 2rem;
+            @media(max-width:768px) {
+                font-size: 1.5rem;
+            }
+            text-transform: uppercase;
+        }
+        h2 {
+            font-size: 6rem;
+            @media(max-width:768px) {
+                font-size: 5rem;
+            }
+        }
+        button {
+            @include btn;
+            &:hover {
+                @include btn-hover;
+            }
+        }
+        p {
+            margin-top: 20px;
+        }
+    }
+}
+
+/*************************
+Product
+*************************/
+.product {
+    padding: $padding;
+    display: flex;
+    flex-wrap: wrap;
+    @media(max-width:768px) {
+        flex-direction: column;
+    }
+    article {
+        flex: 1;
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+    aside {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        padding-left: 30px;
+        @media(max-width:768px) {
+            padding-left: 0;
+        }
+        h2 {
+            font-size: 3rem;
+        }
+        h4 {
+            color: $green;
+            font-size: 1.8rem;
+            text-shadow: $textShadow;
+        }
+        p {
+            padding: 10px 0;
+            span {
+                color: $blue;
+            }
+        }
+        hr {
+            width: 100%;
+            margin: 5px 0;
+        }
+        form {
+            button {
+                @include btn;
+                margin-top: 20px;
+                &:hover {
+                    @include btn-hover;
+                }
+            }
+            span {
+                padding: 15px 17px;
+                border: 1px solid $gray;
+                font-size: 1.2rem;
+                margin: 0 10px;
+                @media(max-width:768px) {
+                    font-size: 1rem;
+                    padding: 5px 7px;
+                    margin: 0 5px;
+                }
+            }
+        }
+        
+    }
+}
+
+/*****************
+******************
+Responsive
+******************
+*****************/
+@media(max-width:768px) {
+    .container {
+        width: 95%;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
